@@ -92,7 +92,7 @@ let mapleader = " "
 nnoremap <leader>pv :Vex <bar> :vertical resize 120 <CR>
 nnoremap <leader><CR> :so ~/.config/nvim/init.vim<CR>
 nnoremap <C-p> :GFiles<CR>
-nnoremap <leader>pf :Files<CR>
+nnoremap <leader>pf :Ex<CR>
 nnoremap <C-j> :cnext<CR>
 nnoremap <C-k> :cprev<CR>
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
@@ -106,9 +106,12 @@ nnoremap <leader>Y gg"+yG
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 nnoremap <leader>g :Git
-nnoremap <leader>t <cmd>ToggleTerm<cr>
-
-
+nnoremap <leader>gw <cmd>Gwrite<cr>
+nnoremap <leader>t <cmd>ToggleTerm size=35<cr>
+nnoremap <leader>kk <C-w>k
+nnoremap <leader>jj <C-w>j
+nnoremap <leader>hh <C-w>h
+nnoremap <leader>ll <C-w>l
 " Coc
 " Set internal encoding of vim, not needed on neovim, since coc.nvim using some
 " unicode characters in the file autoload/float.vim
@@ -194,9 +197,12 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
 
+" Prettier commands
+command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument
+
 " Formatting selected code.
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+xmap <leader>f  :Prettier <cr>
+nmap <leader>f  :Prettier <cr> 
 
 augroup mygroup
   autocmd!
@@ -276,3 +282,4 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 " nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+
