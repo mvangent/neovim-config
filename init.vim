@@ -108,10 +108,10 @@ vnoremap K :m '<-2<CR>gv=gv
 nnoremap <leader>g :Git
 nnoremap <leader>gw <cmd>Gwrite<cr>
 nnoremap <leader>t <cmd>ToggleTerm size=35<cr>
-nnoremap <leader>kk <C-w>k
-nnoremap <leader>jj <C-w>j
-nnoremap <leader>hh <C-w>h
-nnoremap <leader>ll <C-w>l
+nnoremap <leader>wk <C-w>k
+nnoremap <leader>wj <C-w>j
+nnoremap <leader>wh <C-w>h
+nnoremap <leader>wl <C-w>l
 " Coc
 " Set internal encoding of vim, not needed on neovim, since coc.nvim using some
 " unicode characters in the file autoload/float.vim
@@ -200,9 +200,13 @@ nmap <leader>rn <Plug>(coc-rename)
 " Prettier commands
 command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument
 
+" Lint commands
+command! -nargs=0 Eslint :CocCommand eslint.executeAutofix
+
 " Formatting selected code.
-xmap <leader>f  :Prettier <cr>
-nmap <leader>f  :Prettier <cr> 
+xmap <leader>f  :Prettier <CR>
+nmap <leader>f  :Prettier <CR>
+nmap <leader>es :Eslint <CR>
 
 augroup mygroup
   autocmd!
