@@ -54,6 +54,11 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Built-in terminal
 Plug 'akinsho/toggleterm.nvim'
+
+" Debugger
+Plug 'mfussenegger/nvim-dap'
+Plug 'mxsdev/nvim-dap-vscode-js'
+
 call plug#end()
 
 " Set completeopt to have a better completion experience
@@ -87,6 +92,9 @@ colorscheme ayu
 "Setup toggleterm
 lua require("toggleterm").setup{}
 
+"Node Debugger
+lua require("node_debugger")
+
 " Remaps
 let mapleader = " "
 nnoremap <leader>pv :Vex <bar> :vertical resize 120 <CR>
@@ -112,6 +120,15 @@ nnoremap <leader>wk <C-w>k
 nnoremap <leader>wj <C-w>j
 nnoremap <leader>wh <C-w>h
 nnoremap <leader>wl <C-w>l
+
+"Debugger Remaps
+nnoremap <leader>dt :lua require'dap'.toggle_breakpoint()<cr>
+nnoremap <leader>dc :lua require'dap'.continue()<cr>
+nnoremap <leader>dso :lua require'dap'.step_over()<cr>
+nnoremap <leader>dsi :lua require'dap'.step_into()<cr>
+nnoremap <leader>do :lua require'dap'.repl.open()<cr>
+nnoremap <leader>dh :help dap-widgets<cr>
+
 " Coc
 " Set internal encoding of vim, not needed on neovim, since coc.nvim using some
 " unicode characters in the file autoload/float.vim
@@ -286,4 +303,6 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 " nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+
+
 
