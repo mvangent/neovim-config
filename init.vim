@@ -44,9 +44,6 @@ Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/vim-vsnip'
 " See hrsh7th's other plugins for more completion sources!
 
-" To enable more of the features of rust-analyzer, such as inlay hints and more!
-Plug 'simrat39/rust-tools.nvim'
-
 " Typescript lsp
 " Plug 'jose-elias-alvarez/null-ls.nvim'
 " Plug 'jose-elias-alvarez/nvim-lsp-ts-utils'
@@ -57,7 +54,9 @@ Plug 'akinsho/toggleterm.nvim'
 
 " Debugger
 Plug 'mfussenegger/nvim-dap'
+Plug 'rcarriga/nvim-dap-ui'
 Plug 'mxsdev/nvim-dap-vscode-js'
+
 
 call plug#end()
 
@@ -82,9 +81,6 @@ lua require("lsp_config_golang")
 " autocmd BufWritePre *.go lua vim.lsp.buf.formatting()
 " autocmd BufWritePre *.go lua goimports(1000)
 
-" Lsp setup Rust
-lua require("lsp_config_rust")
-
 "Theme configuration
 let ayucolor="dark"
 colorscheme ayu
@@ -93,7 +89,11 @@ colorscheme ayu
 lua require("toggleterm").setup{}
 
 "Node Debugger
-lua require("node_debugger")
+lua require("debugger_nodeJS")
+
+"UI for debugger
+lua require("debugger_ui") 
+
 
 " Remaps
 let mapleader = " "
