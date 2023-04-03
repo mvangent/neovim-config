@@ -1,4 +1,5 @@
 set scrolloff=8
+
 set number 
 set relativenumber 
 set tabstop=4 softtabstop=4
@@ -17,7 +18,7 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-telescope/telescope.nvim'
-
+ 
 " Styling
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'ayu-theme/ayu-vim'
@@ -57,6 +58,8 @@ Plug 'mfussenegger/nvim-dap'
 Plug 'rcarriga/nvim-dap-ui'
 Plug 'mxsdev/nvim-dap-vscode-js'
 
+" Copilot
+Plug 'zbirenbaum/copilot.lua' 
 
 call plug#end()
 
@@ -74,6 +77,9 @@ lua require("auto_completion_setup")
 
 " Lsp setup Golang
 lua require("lsp_config_golang")
+
+"Code Pilot Setup"
+lua require("copilot_setup")
 
 " Lsp setup Typescript 
 " lua require("lsp_config_ts")
@@ -93,7 +99,6 @@ lua require("debugger_nodeJS")
 
 "UI for debugger
 lua require("debugger_ui") 
-
 
 " Remaps
 let mapleader = " "
@@ -120,6 +125,7 @@ nnoremap <leader>wk <C-w>k
 nnoremap <leader>wj <C-w>j
 nnoremap <leader>wh <C-w>h
 nnoremap <leader>wl <C-w>l
+nnoremap <leader>cp :lua require('copilot.suggestion').toggle_auto_trigger()<cr>
 
 "Debugger Remaps
 nnoremap <leader>dt :lua require'dap'.toggle_breakpoint()<cr>
