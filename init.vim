@@ -18,6 +18,9 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-telescope/telescope.nvim'
+
+" Prime Navigation Goodness
+Plug 'ThePrimeagen/harpoon'
  
 " Styling
 Plug 'kyazdani42/nvim-web-devicons'
@@ -125,7 +128,7 @@ nnoremap <leader>wk <C-w>k
 nnoremap <leader>wj <C-w>j
 nnoremap <leader>wh <C-w>h
 nnoremap <leader>wl <C-w>l
-nnoremap <leader>cp :lua require('copilot.suggestion').toggle_auto_trigger()<cr>
+nnoremap <leader>C :lua require('copilot.suggestion').toggle_auto_trigger()<cr>
 
 "Debugger Remaps
 nnoremap <leader>dt :lua require'dap'.toggle_breakpoint()<cr>
@@ -134,6 +137,10 @@ nnoremap <leader>dso :lua require'dap'.step_over()<cr>
 nnoremap <leader>dsi :lua require'dap'.step_into()<cr>
 nnoremap <leader>do :lua require'dap'.repl.open()<cr>
 nnoremap <leader>dh :help dap-widgets<cr>
+
+" Harpoon Remaps
+nnoremap <leader>h :lua require('harpoon.mark').add_file()<cr>
+nnoremap <leader>l :lua require('harpoon.ui').toggle_quick_menu()<cr>
 
 " Coc
 " Set internal encoding of vim, not needed on neovim, since coc.nvim using some
