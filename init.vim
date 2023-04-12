@@ -62,7 +62,7 @@ Plug 'rcarriga/nvim-dap-ui'
 Plug 'mxsdev/nvim-dap-vscode-js'
 
 " Copilot
-Plug 'zbirenbaum/copilot.lua' 
+Plug 'github/copilot.vim' 
 
 call plug#end()
 
@@ -82,7 +82,7 @@ lua require("auto_completion_setup")
 lua require("lsp_config_golang")
 
 "Code Pilot Setup"
-lua require("copilot_setup")
+" lua require("copilot_setup")
 
 " Lsp setup Typescript 
 " lua require("lsp_config_ts")
