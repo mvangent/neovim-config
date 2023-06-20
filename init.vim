@@ -129,6 +129,8 @@ nnoremap <leader>wj <C-w>j
 nnoremap <leader>wh <C-w>h
 nnoremap <leader>wl <C-w>l
 nnoremap <leader>C :lua require('copilot.suggestion').toggle_auto_trigger()<cr>
+nnoremap <leader>fp :let @" = expand("%")<cr>
+
 
 "Debugger Remaps
 nnoremap <leader>dt :lua require'dap'.toggle_breakpoint()<cr>
