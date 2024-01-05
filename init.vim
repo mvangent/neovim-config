@@ -53,6 +53,10 @@ Plug 'hrsh7th/vim-vsnip'
 " Plug 'jose-elias-alvarez/nvim-lsp-ts-utils'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+" Java lsp
+" https://sookocheff.com/post/vim/neovim-java-ide/ for details on dependencies
+Plug 'mfussenegger/nvim-jdtls'
+
 " Built-in terminal
 Plug 'akinsho/toggleterm.nvim'
 
