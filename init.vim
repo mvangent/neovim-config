@@ -68,6 +68,9 @@ Plug 'mxsdev/nvim-dap-vscode-js'
 " Copilot
 Plug 'zbirenbaum/copilot.lua' 
 
+Plug 'nvim-neotest/nvim-nio'
+
+
 call plug#end()
 
 " Set completeopt to have a better completion experience
