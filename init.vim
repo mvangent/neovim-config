@@ -66,7 +66,9 @@ Plug 'rcarriga/nvim-dap-ui'
 Plug 'mxsdev/nvim-dap-vscode-js'
 
 " Copilot
-Plug 'zbirenbaum/copilot.lua' 
+Plug 'zbirenbaum/copilot.lua'
+Plug 'CopilotC-Nvim/CopilotChat.nvim', { 'branch': 'canary' }
+
 
 Plug 'nvim-neotest/nvim-nio'
 

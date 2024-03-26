@@ -40,3 +40,8 @@ require('copilot').setup({
   },
   copilot_node_command = vim.fn.expand("$HOME") .. "/.volta/tools/image/node/18.18.2/bin/node", -- Node.js version must be > 18.x 
 })
+
+require("CopilotChat").setup {
+  debug = true, -- Enable debugging
+  -- See Configuration section for rest
+}

@@ -10,7 +10,7 @@ local root_dir = require('jdtls.setup').find_root(root_markers)
 -- with multiple different projects, each project must use a dedicated data directory.
 -- This variable is used to configure eclipse to use the directory name of the
 -- current project found using the root_marker as the folder for project specific data.
-local workspace_folder = home .. "/.local/share/eclipse/" .. vim.fn.fnamemodify(root_dir, ":p:h:t")
+local workspace_folder = home .. "/Desktop/Kb-leap/internal-partner-bank-engine" -- .. vim.fn.fnamemodify(root_dir, ":p:h:t")
 
 -- Helper function for creating keymaps
 function nnoremap(rhs, lhs, bufopts, desc)
@@ -115,7 +115,7 @@ local config = {
         runtimes = {
           {
             name = "JavaSE-17",
-            path = home .. "/opt/homebrew/opt/openjdk@17/bin/java", -- "/.asdf/installs/java/corretto-17.0.4.9.1",
+            path = "/opt/homebrew/opt/openjdk@17", -- "/.asdf/installs/java/corretto-17.0.4.9.1",
           },
           --{
             --name = "JavaSE-11",
