@@ -329,7 +329,7 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
 " Show help actions with telescope
-nnoremap <leader>cch :lua require("CopilotChat.actions"); require("CopilotChat.integrations.telescope").pick(require("CopilotChat.actions").help_actions())<CR>
+nnoremap <leader>P :lua require("CopilotChat.actions"); require("CopilotChat.integrations.telescope").pick(require("CopilotChat.actions").help_actions())<CR>
 
 " Show prompts actions with telescope
-nnoremap <leader>ccp :lua require("CopilotChat.actions"); require("CopilotChat.integrations.telescope").pick(require("CopilotChat.actions").prompt_actions())<CR>
+nnoremap <leader>p :lua require("CopilotChat.actions"); require("CopilotChat.integrations.telescope").pick(require("CopilotChat.actions").prompt_actions())<CR>
