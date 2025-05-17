@@ -71,7 +71,7 @@ Plug 'CopilotC-Nvim/CopilotChat.nvim', { 'branch': 'canary' }
 
 
 Plug 'nvim-neotest/nvim-nio'
-
+Plug 'jparise/vim-graphql'
 
 call plug#end()
 
