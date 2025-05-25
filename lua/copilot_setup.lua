@@ -19,7 +19,7 @@ require('copilot').setup({
     auto_trigger = true,
     debounce = 75,
     keymap = {
-      accept = "<M-l>",
+      accept = "<C-l>",
       accept_word = false,
       accept_line = false,
       next = "<M-]>",
@@ -38,7 +38,7 @@ require('copilot').setup({
     cvs = false,
     ["."] = false,
   },
-  copilot_node_command = vim.fn.expand("$HOME") .. "/.volta/tools/image/node/18.18.2/bin/node", -- Node.js version must be > 18.x 
+  -- copilot_node_command = vim.fn.expand("$HOME") .. "/.volta/tools/image/node/18.18.2/bin/node", -- Node.js version must be > 18.x 
 })
 
 require("CopilotChat").setup {
