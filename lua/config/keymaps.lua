@@ -19,8 +19,10 @@ keymap("n", "<leader>fb", "<cmd>Telescope buffers<cr>", { desc = "Find buffers" 
 keymap("n", "<leader>fh", "<cmd>Telescope help_tags<cr>", { desc = "Help tags" })
 
 -- Clipboard
-keymap("v", "<leader>p", '"_dP', { desc = "Paste without yanking" })
-keymap("v", "<leader>y", '"+y', { desc = "Yank to clipboard" })
+-- Visual mode uses non-leader keys
+keymap("v", "gp", '"_dP', { desc = "Paste without yanking" })
+keymap("v", "gy", '"+y', { desc = "Yank to clipboard" })
+-- Normal mode uses leader keys
 keymap("n", "<leader>y", '"+y', { desc = "Yank to clipboard" })
 keymap("n", "<leader>Y", 'gg"+yG', { desc = "Yank all to clipboard" })
 keymap("n", "<leader>fp", ':let @" = expand("%")<cr>', { desc = "Copy file path" })

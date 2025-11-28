@@ -102,7 +102,7 @@ return {
     config = function()
       require("toggleterm").setup({
         size = 35,
-        open_mapping = [[<leader>t]],
+        -- open_mapping removed - using normal mode only keybinding in keymaps.lua
         direction = "horizontal",
         shade_terminals = true,
       })
