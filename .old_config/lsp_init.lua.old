@@ -1,0 +1,103 @@
+-- LSP Setup Coordinator
+-- This file sets up LSP configurations for all language servers
+-- Uses the modern vim.lsp.config API (Neovim 0.11+)
+
+local cmp_nvim_lsp = require("cmp_nvim_lsp")
+
+-- Enhanced capabilities from nvim-cmp
+local capabilities = cmp_nvim_lsp.default_capabilities()
+
+-- Common LSP keymaps
+local on_attach = function(client, bufnr)
+  local opts = { buffer = bufnr, noremap = true, silent = true }
+
+  -- Key mappings
+  vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
+  vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+  vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+  vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
+  vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
+  vim.keymap.set("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, opts)
+  vim.keymap.set("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, opts)
+  vim.keymap.set("n", "<leader>wl", function()
+    print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+  end, opts)
+  vim.keymap.set("n", "<leader>D", vim.lsp.buf.type_definition, opts)
+  vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
+  vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
+  vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+  vim.keymap.set("n", "<leader>f", function()
+    vim.lsp.buf.format({ async = true })
+  end, opts)
+
+  -- Enable inlay hints if supported
+  if client.server_capabilities.inlayHintProvider then
+    vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+  end
+end
+
+-- Load server configurations
+local servers = require("lsp.servers")
+
+-- Setup Mason LSPConfig handlers
+local mason_lspconfig = require("mason-lspconfig")
+
+-- Default handler for all servers
+mason_lspconfig.setup_handlers({
+  -- Default handler - called for each installed server
+  function(server_name)
+    local server_config = servers[server_name] or {}
+
+    -- Merge with capabilities and on_attach
+    local config = vim.tbl_deep_extend("force", server_config, {
+      capabilities = capabilities,
+      on_attach = on_attach,
+    })
+
+    -- Register the LSP server configuration using modern API
+    vim.lsp.config(server_name, config)
+
+    -- Enable the server for appropriate filetypes
+    if config.filetypes then
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = config.filetypes,
+        callback = function()
+          vim.lsp.enable(server_name)
+        end,
+      })
+    end
+  end,
+})
+
+-- Diagnostic configuration
+vim.diagnostic.config({
+  virtual_text = {
+    prefix = "●",
+    source = "if_many",
+  },
+  float = {
+    source = "always",
+    border = "rounded",
+  },
+  signs = true,
+  underline = true,
+  update_in_insert = false,
+  severity_sort = true,
+})
+
+-- Diagnostic signs
+local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+for type, icon in pairs(signs) do
+  local hl = "DiagnosticSign" .. type
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+end
+
+-- Auto-format on save for specific filetypes
+local format_on_save_group = vim.api.nvim_create_augroup("LspFormatOnSave", { clear = true })
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = { "*.go", "*.ts", "*.js", "*.tsx", "*.jsx", "*.java" },
+  callback = function()
+    vim.lsp.buf.format({ timeout_ms = 2000 })
+  end,
+  group = format_on_save_group,
+})
